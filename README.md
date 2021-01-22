@@ -5,4 +5,4 @@ The API is used for connecting to the database when developing a custom applicat
 * Examples for using the API using R are provided in a [Jupyter notebook](https://github.com/MfN-Berlin/AnimalAudiogramDatabase_API/blob/main/doc/Animal%20Audiogram%20Database%20usage%20examples.ipynb).
 * Please see the [API documentation](https://github.com/MfN-Berlin/AnimalAudiogramDatabase_API/wiki/API-documentation) for usage details 
 
-This API is a submodule of the [AnimaAudiogramDatabase](https://github.com/MfN-Berlin/AnimalAudiogramDatabase)
+This API is a submodule of the [AnimalAudiogramDatabase](https://github.com/MfN-Berlin/AnimalAudiogramDatabase)
