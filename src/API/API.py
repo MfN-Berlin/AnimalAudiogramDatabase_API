@@ -12,7 +12,6 @@ import configparser
 import simplejson
 import logging
 from Query import *
-from AdvancedQuery import Taxonomy_query
 from celery import Celery
 from Plotter import Plotter
 from SPL_converter import SPL_converter
