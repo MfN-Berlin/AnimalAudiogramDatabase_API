@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-GDM client for Audiogrambase http API.
+Audiogrambase http API.
 
 Created on 27.11.2019
-@author: Alvaro Ortiz, Museum fuer Naturkunde Berlin
+@author: Alvaro Ortiz Troncoso, Museum fuer Naturkunde Berlin
 """
 
 from flask import Flask, request, render_template, url_for, jsonify, Response, send_file
