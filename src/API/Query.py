@@ -685,7 +685,7 @@ class Browse_query(Query):
                 publication,
                 test_animal as t,
                 individual_animal as i,
-                taxon
+                taxon, facility
             where
                 audiogram_publication.audiogram_experiment_id=exp.id
                 and publication.id=audiogram_publication.publication_id
@@ -719,7 +719,7 @@ class Browse_query(Query):
         facility = None
         if self._check_key_in_param(param, 'facility'):
             facility = self._str2tuple(param['facility'])
-            query += "and facility.id in %(facility)s\n"
+            query += "and exp.facility_id = facility.id and facility.id in %(facility)s\n"
 
         year_from = None
         if self._check_key_in_param(param, 'year_from'):
@@ -845,7 +845,7 @@ class Browse_query(Query):
             query += "order by vernacular_name_english"
 
         # logging.warning(param)
-        # logging.warning(query)
+        logging.warning(query)
 
         # Execute the query, pass the GET parameter values,
         # relying on the database API to do proper escaping
