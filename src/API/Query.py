@@ -1162,3 +1162,23 @@ class Seals_query(Query):
             row_headers = [x[0] for x in cursor.description]
             all_results = cursor.fetchall()
         return {'headers': row_headers, 'results': all_results}
+
+
+class Taxonomy_query(Query):
+    """get full taxonomic tree in the database"""
+
+    def _run(self, param=None):
+        with self.connection as cursor:
+            cursor.execute(
+                """
+                select
+                   *
+                from
+                   taxon
+                order by
+                   unique_name
+                """
+            )
+            row_headers = [x[0] for x in cursor.description]
+            all_results = cursor.fetchall()
+        return {'headers': row_headers, 'results': all_results}
