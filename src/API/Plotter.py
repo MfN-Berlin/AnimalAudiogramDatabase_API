@@ -49,7 +49,7 @@ class Plotter():
                 + geom_line(color='black')  # noqa: F405 W503
                 + geom_point(color='black', fill='black')  # noqa: F405 W503
                 + labs(title=self.title, x=x_label, y=y_label)  # noqa: F405 E501 W503
-                + scale_x_log10(limits=(0.1, 200))  # noqa: F405 W503
+                + scale_x_log10(limits=(0.05, 200))  # noqa: F405 W503
                 + scale_y_continuous(limits=(-50, 160))  # noqa: F405 W503
                 + theme_bw()  # noqa: F405 W503
             )
