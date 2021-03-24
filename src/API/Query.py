@@ -685,7 +685,7 @@ class Browse_query(Query):
                 publication,
                 test_animal as t,
                 individual_animal as i,
-                taxon
+                taxon, facility
             where
                 audiogram_publication.audiogram_experiment_id=exp.id
                 and publication.id=audiogram_publication.publication_id
@@ -719,7 +719,7 @@ class Browse_query(Query):
         facility = None
         if self._check_key_in_param(param, 'facility'):
             facility = self._str2tuple(param['facility'])
-            query += "and facility.id in %(facility)s\n"
+            query += "and exp.facility_id = facility.id and facility.id in %(facility)s\n"
 
         year_from = None
         if self._check_key_in_param(param, 'year_from'):
@@ -845,7 +845,7 @@ class Browse_query(Query):
             query += "order by vernacular_name_english"
 
         # logging.warning(param)
-        # logging.warning(query)
+        logging.warning(query)
 
         # Execute the query, pass the GET parameter values,
         # relying on the database API to do proper escaping
@@ -1157,6 +1157,26 @@ class Seals_query(Query):
                 and individual_animal.taxon_id=taxon.ott_id
                 and test_animal.individual_animal_id=individual_animal.id
                 and audiogram_experiment.id=test_animal.audiogram_experiment_id
+                """
+            )
+            row_headers = [x[0] for x in cursor.description]
+            all_results = cursor.fetchall()
+        return {'headers': row_headers, 'results': all_results}
+
+
+class Taxonomy_query(Query):
+    """get full taxonomic tree in the database"""
+
+    def _run(self, param=None):
+        with self.connection as cursor:
+            cursor.execute(
+                """
+                select
+                   *
+                from
+                   taxon
+                order by
+                   unique_name
                 """
             )
             row_headers = [x[0] for x in cursor.description]

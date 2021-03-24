@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-GDM client for Audiogrambase http API.
+Audiogrambase http API.
 
 Created on 27.11.2019
-@author: Alvaro Ortiz, Museum fuer Naturkunde Berlin
+@author: Alvaro Ortiz Troncoso, Museum fuer Naturkunde Berlin
 """
 
 from flask import Flask, request, render_template, url_for, jsonify, Response, send_file
@@ -12,7 +12,6 @@ import configparser
 import simplejson
 import logging
 from Query import *
-from AdvancedQuery import Taxonomy_query
 from celery import Celery
 from Plotter import Plotter
 from SPL_converter import SPL_converter
@@ -101,14 +100,14 @@ def download_multiple():
 
 def json2csv(data_points):
     headers = data_points[0].keys()
-    headers_str = ','.join(headers)
+    headers_str = ';'.join(headers)
     rows = []
     for p in data_points:
         vals = p.values()
         strvals = []
         for v in vals:
             strvals.append('"{0}"'.format(str(v)))
-        rows.append(','.join(strvals))
+        rows.append(';'.join(strvals))
     csv = '\n'.join(rows)
     csv = headers_str + '\n' + csv
     return csv
