@@ -29,8 +29,8 @@ fapp.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 fapp.config['JSON_AS_ASCII'] = False
 
 # Configure and initialize Celery
-fapp.config['CELERY_BROKER_URL'] = 'redis://hip_redis:6379/0'
-fapp.config['CELERY_RESULT_BACKEND'] = 'redis://hip_redis:6379/0'
+fapp.config['CELERY_BROKER_URL'] = 'redis://aad_redis:6379/0'
+fapp.config['CELERY_RESULT_BACKEND'] = 'redis://aad_redis:6379/0'
 client = Celery(fapp.name, broker=fapp.config['CELERY_BROKER_URL'])
 client.conf.update(fapp.config)
 
