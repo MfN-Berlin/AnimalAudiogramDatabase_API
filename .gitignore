@@ -1,3 +1,4 @@
 src/API/api.ini
 __pycache__
 src/API/static/
+.env

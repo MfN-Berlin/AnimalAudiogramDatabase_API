@@ -17,7 +17,7 @@ from Plotter import Plotter
 from SPL_converter import SPL_converter
 
 
-configPath = "/src/API/api.ini"
+configPath = "/src/API/.env"
 """Path to configuration file."""
 api_config = None
 """ConfigParser object will hold the custom API configuration """
