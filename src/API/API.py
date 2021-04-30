@@ -397,12 +397,14 @@ def get_plot():
     https://animalaudiograms.museumfuernaturkunde.berlin/api/v1/audiogram?plot=118
     Returns a json string with the status of the plotting process
     """
+    logging.warning('========================')
     if 'id' not in request.args:
         raise Exception("No id was given.")
     id = int(request.args['id'])
     # get the data points
     data_points = Data_query(api_config).run(id)
     # delegate execution
+    logging.warning('PLOT')
     task = plot.delay(simplejson.dumps(data_points), request.url)
     # return the url where the status can be read
     return(
@@ -466,7 +468,6 @@ def plot(self, data_points, url):
     @param data_points: data to be plotted
     @param url: will be used for cache key. Only GET requests!
     """
-
     # plot the data points
     plotter = Plotter()
     img_file = plotter.plot(data_points, url)

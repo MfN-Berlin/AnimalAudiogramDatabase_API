@@ -932,11 +932,11 @@ class Data_query(Query):
             if from_id in [2, 3, 5, 6, 7]:
                 l[2] = converter.convert(value, from_id)
             # water
-            if from_id in [1, 2, 3]:
+            if from_id in [1, 2, 3, 6]:
                 l[3] = 1
                 l[11] = "re 1 μPa"
             # air
-            elif from_id in [4, 5, 6]:
+            elif from_id in [4, 5]:
                 l[3] = 4
                 l[11] = "re 20 μPa"
             c = tuple(l)

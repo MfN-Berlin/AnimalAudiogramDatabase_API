@@ -27,10 +27,10 @@ class SPL_converter:
              'conversion_factor_waterborne_sound_in_decibel': 26},
             {'id': 5, 'spl_reference_value': 0.0002, 'spl_reference_unit': "dyne/cm<sup>2</sup>",
              'spl_reference_significance': "deprecated SPL reference in air",
-             'conversion_factor_airborne_sound_in_decibel': 74,
+             'conversion_factor_airborne_sound_in_decibel': 0,
              'conversion_factor_waterborne_sound_in_decibel': 'NA'},
             {'id': 6, 'spl_reference_value': 1, 'spl_reference_unit': "dyne/cm<sup>2</sup>",
-             'spl_reference_significance': "deprecated SPL reference in air",
+             'spl_reference_significance': "deprecated SPL reference in water",
              'conversion_factor_airborne_sound_in_decibel': 74,
              'conversion_factor_waterborne_sound_in_decibel': 100},
             {'id': 7, 'spl_reference_value': 2e-4, 'spl_reference_unit': "μbar",
@@ -48,8 +48,8 @@ class SPL_converter:
         @return boolean true if units are compatible.
 
         """
-        waterborne = [1, 2, 3]
-        airborne = [4, 5, 6]
+        waterborne = [1, 2, 3, 6]
+        airborne = [4, 5]
         logging.warning("+++++++++++++++++++++++++++++++++++++++")
         logging.warning(units)
         # some audiograms have no unit, these should never be overlayed
@@ -92,12 +92,12 @@ class SPL_converter:
         for r in self.sound_pressure_level_reference:
             if r['id'] == from_id:
                 # water
-                if from_id in [1, 2, 3]:
+                if from_id in [1, 2, 3, 6]:
                     if 'conversion_factor_waterborne_sound_in_decibel' in r:
                         factor = r['conversion_factor_waterborne_sound_in_decibel']
                         break
                 # air
-                elif from_id in [4, 5, 6]:
+                elif from_id in [4, 5]:
                     if 'conversion_factor_airborne_sound_in_decibel' in r:
                         factor = r['conversion_factor_airborne_sound_in_decibel']
                         break

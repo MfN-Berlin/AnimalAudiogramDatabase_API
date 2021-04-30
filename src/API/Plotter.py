@@ -32,7 +32,8 @@ class Plotter():
         path = os.path.join("./static", filename)
 
         # if file doesn't already exist, plot at save it
-        if not os.path.exists(path):
+        # if not os.path.exists(path):
+        if True:  # switch off caching
             data_points_json = json.loads(str(data_points))
             data_points_df = pd.DataFrame.from_dict(data_points_json)
             x_label = "Frequency (kHz)"
