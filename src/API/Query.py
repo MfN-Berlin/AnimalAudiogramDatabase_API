@@ -471,9 +471,7 @@ class Species_query(Query):
 
 
 class All_taxa_query(Query):
-    """Get taxon taxon id, taxon name and animal count for all taxa in the database.
-
-    for the time being: return only species and subspecies
+    """Get taxon id, taxon name and animal count for all taxa in the database.
     """
 
     def _run(self, param=None):
@@ -489,7 +487,7 @@ class All_taxa_query(Query):
                 left join
                    individual_animal on taxon.ott_id = individual_animal.taxon_id
                 where
-                   taxon.rank in ('species', 'subspecies')
+                   taxon.rank in ('species')
                 group by
                    taxon.ott_id
                 order by
@@ -503,8 +501,6 @@ class All_taxa_query(Query):
 
 class All_taxa_vernacular_query(Query):
     """Get taxon taxon id, English name and animal count for all taxa in the database.
-
-    for the time being: return only species and subspecies
     """
 
     def _run(self, param=None):
@@ -520,7 +516,7 @@ class All_taxa_vernacular_query(Query):
                 left join
                    individual_animal on taxon.ott_id = individual_animal.taxon_id
                 where
-                   taxon.rank in ('species', 'subspecies')
+                   taxon.rank in ('species')
                 group by
                    taxon.ott_id
                 order by
