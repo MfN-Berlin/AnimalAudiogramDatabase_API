@@ -471,7 +471,7 @@ class Species_query(Query):
 
 
 class All_taxa_query(Query):
-    """Get taxon taxon id, taxon name and animal count for all taxa in the database.
+    """Get taxon id, taxon name and animal count for all taxa in the database.
     """
 
     def _run(self, param=None):
